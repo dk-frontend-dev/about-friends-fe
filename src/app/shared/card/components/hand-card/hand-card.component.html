@@ -1,0 +1,11 @@
+<div class="card__face" [ngClass]="cardProps.stone">
+  <p class="mana">{{ cardProps.mana }}</p>
+  <img class="card__image" [src]="cardProps.img" alt="" />
+  <div class="card__content">
+    <div class="card__stone" [ngClass]="cardProps.stone"></div>
+    <h2 class="card__content-title">{{ cardProps.title }}</h2>
+    <p class="card__content-text" [innerHTML]="cardProps.text"></p>
+  </div>
+  <p class="card__attack" *ngIf="cardProps.attack">{{ cardProps.attack }}</p>
+  <p class="card__health" *ngIf="cardProps.health">{{ cardProps.health }}</p>
+</div>

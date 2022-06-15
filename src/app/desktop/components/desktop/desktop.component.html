@@ -1,0 +1,39 @@
+<video
+  #videoPlayer
+  (ended)="vidEnded()"
+  (canplay)="canPlay(videoPlayer)"
+  [ngStyle]="{opacity: videoOpacity}"
+  [src]="videoSrc | async"
+></video>
+<app-profile
+  [currentMana]="enemyProfile.currentMana"
+  [maxMana]="enemyProfile.maxMana"
+  [health]="enemyProfile.health"
+  [attack]="enemyProfile.attack"
+  [powerImg]="enemyProfile.powerImg"
+  [avatar]="enemyProfile.avatar"
+  [side]="'profile-enemy'"
+>
+  <app-enemy-hand [count]="4"></app-enemy-hand>
+</app-profile>
+<app-field-enemy></app-field-enemy>
+<button class="turn" mat-raised-button color="warn">Закончить Ход</button>
+<app-field-my
+  cdkDropList
+  #fieldList="cdkDropList"
+  [cdkDropListConnectedTo]="[cardsList]"
+  (cdkDropListDropped)="drop($event)"
+  [field]="field"
+></app-field-my>
+<app-profile
+  [currentMana]="myProfile.currentMana"
+  [maxMana]="myProfile.maxMana"
+  [health]="myProfile.health"
+  [attack]="myProfile.attack"
+  [avatar]="myProfile.avatar"
+  [powerImg]="myProfile.powerImg"
+  [side]="'profile-me'"
+>
+  <app-my-hand cdkDropList #cardsList="cdkDropList" [cdkDropListConnectedTo]="[fieldList]" [cards]="cards">
+  </app-my-hand>
+</app-profile>

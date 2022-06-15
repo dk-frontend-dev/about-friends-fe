@@ -1,0 +1,44 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: #eee;
+  height: inherit;
+  position: relative;
+
+  &:before {
+    content: '';
+    position: absolute;
+    background-size: cover;
+    background-repeat: no-repeat;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
+    opacity: 0.4;
+    background-image: url('https://abrakadabra.fun/uploads/posts/2021-12/1639845313_1-abrakadabra-fun-p-granzh-tekstura-1.jpg');
+  }
+}
+
+.hand {
+  position: absolute;
+  left: 50%;
+  bottom: 60px;
+  transform: translate(100px, 0);
+}
+
+video {
+  position: absolute;
+  transition: 0.4s opacity ease-in;
+  opacity: 0;
+}
+
+.turn {
+  position: absolute;
+  z-index: 2;
+  right: 50px;
+  top: 50%;
+  transform: translate(0, -50%);
+}

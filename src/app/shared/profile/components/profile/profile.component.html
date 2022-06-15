@@ -1,0 +1,25 @@
+<div class="profile" [ngClass]="sideProps">
+  <p class="mana-stat">
+    <img src="assets/gem-solid.svg" width="30" height="30" alt="" />
+    {{ currentManaProps }}/{{ maxManaProps }}
+  </p>
+  <div class="profile__stats">
+    <div>
+      <p class="health profile__stats-row">
+        <img src="assets/health-icon.svg" alt="" />
+        {{ healthProps }}
+      </p>
+      <p class="attack profile__stats-row">
+        <img src="assets/sword.png" width="40" height="40" alt="" />
+        {{ attackProps }}
+      </p>
+    </div>
+    <button mat-fab class="power">
+      <img [src]="powerImgProps" width="50" height="50" alt="" />
+    </button>
+  </div>
+  <img class="profile__img" [src]="avatarProps" alt="" width="170" height="180" />
+  <ng-content></ng-content>
+</div>
+
+<!-- https://www.gannett-cdn.com/-mm-/fb97822d6312e4adfc1259f76f91c20271f2e24c/c=18-135-2403-3312/local/-/media/USATODAY/USATODAY/2014/07/02/1404338747000-USA-Today-Online2.jpg -->

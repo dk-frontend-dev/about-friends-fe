@@ -1,0 +1,203 @@
+.cdk-drag-placeholder {
+  opacity: 0;
+}
+
+:host {
+  height: 150px;
+  margin: 0 -25px;
+  position: relative;
+  display: block;
+  width: 100px;
+  &:after {
+    bottom: 0;
+    content: '';
+    left: -60px;
+    position: absolute;
+    right: -60px;
+    top: 0px;
+    z-index: 10;
+  }
+}
+
+.card__face {
+  background: #fff;
+  bottom: 0;
+  content: '';
+  left: 0;
+  pointer-events: none;
+  position: absolute;
+  right: 0;
+  top: 0;
+  border-radius: 8px;
+  transition: 800ms cubic-bezier(0.19, 1, 0.22, 1) transform;
+  &:after {
+    animation: none;
+    background: #fff;
+    bottom: 0;
+    content: '';
+    left: 0;
+    opacity: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+}
+
+:host.cdk-drag-placeholder {
+  opacity: 0;
+}
+
+:host.cdk-drag-preview {
+  .card__face {
+    transform: translateY(-100px) rotate(0deg) scale(2.3) !important;
+  }
+}
+
+.card__face.legend {
+  border: 3px solid var(--legend);
+}
+
+.card__face.common {
+  border: 3px solid var(--common);
+}
+
+.card__face.rare {
+  border: 3px solid var(--rare);
+}
+
+.card__image {
+  width: 100%;
+  height: 70px;
+  object-fit: cover;
+  border-radius: 4px 4px 0 0;
+}
+
+.card__content {
+  padding: 3px 3px 0;
+  transform: translate(0, -15.5px);
+}
+
+.card__content-title {
+  font-size: 13px;
+  line-height: 13px;
+  font-weight: 700;
+  font-style: italic;
+  text-align: center;
+  padding-bottom: 1px;
+  margin-bottom: 1px;
+  border-bottom: 1px solid #eee;
+}
+
+.card__content-text {
+  font-size: 7px;
+  line-height: 8px;
+  text-align: left;
+}
+
+.card__stone {
+  width: 10px;
+  height: 12px;
+  border-radius: 50%;
+  margin: 0 auto;
+}
+
+.card__stone.legend {
+  background: var(--legend-gradient);
+}
+
+.card__stone.common {
+  background: var(--common-gradient);
+}
+
+.card__stone.rare {
+  background: var(--rare-gradient);
+}
+
+.card__attack {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  font-size: 12px;
+  border-radius: 50%;
+  background: var(--attack);
+  color: #fff;
+  font-style: italic;
+  font-weight: 900;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  bottom: 2px;
+  left: 2px;
+}
+
+.card__health {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  font-size: 12px;
+  border-radius: 50%;
+  background: var(--health);
+  color: #fff;
+  font-style: italic;
+  font-weight: 900;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  bottom: 2px;
+  right: 2px;
+}
+
+.mana {
+  position: absolute;
+  top: -4px;
+  left: -4px;
+  font-size: 11px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  color: #fff;
+  background: var(--mana);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-style: italic;
+  font-weight: 700;
+}
+
+$total: 10;
+@for $i from 0 through ($total - 1) {
+  $hue: ($i / $total) * -360;
+  $rotationRange: 50;
+  $rotation: ($i - ($total - 1) / 2) / ($total - 2) * $rotationRange;
+  $offsetRange: 80;
+  $offset: abs(($i - ($total - 1) / 2) / ($total - 2) * $offsetRange);
+  :host:nth-child(#{$i + 1}) {
+    .card__face {
+      transform: translateY($offset * 1px) rotate($rotation * 1deg);
+    }
+    &.card-hand:hover {
+      .card__face {
+        transform: translateY(-100px) rotate(0deg) scale(2.3);
+        transition-duration: 0ms;
+        z-index: 5;
+        &:after {
+          animation: fade 250ms ease-out forwards;
+        }
+      }
+      &:after {
+        top: -175px;
+      }
+    }
+  }
+}
+
+@keyframes fade {
+  0% {
+    opacity: 0.9;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.15);
+  }
+}

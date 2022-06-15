@@ -1,1 +1,73 @@
-/* You can add global styles to this file, and also import other style files */
+:root {
+  --mana: #67c5d4;
+  --attack: #ec9b3b;
+  --health: #eb5353;
+  --legend: rgba(255, 165, 0, 1);
+  --common: rgb(166, 166, 166);
+  --rare: #0aa1dd;
+  --rare-gradient: radial-gradient(circle, #0aa1dd 0%, #2155cd 70%);
+  --legend-gradient: radial-gradient(circle, rgba(250, 194, 19, 1) 0%, rgba(255, 165, 0, 1) 70%);
+  --common-gradient: radial-gradient(circle, rgb(166, 166, 166) 0%, rgb(131, 128, 128) 70%);
+}
+
+*,
+*:before,
+*:after {
+  font-family: 'Roboto', sans-serif;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+* {
+  user-select: none !important;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  overflow: hidden;
+}
+
+body,
+app-root {
+  padding: 0;
+  margin: 0;
+  height: 100vh;
+}
+
+.mat-body p,
+.mat-body-1 p,
+.mat-typography p {
+  margin-bottom: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+p {
+  margin: 0;
+  padding: 0;
+}
+
+.mat-fab span.mat-button-wrapper {
+  padding: 0;
+}
+
+.field {
+  height: calc((100vh - 190px * 2) / 2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 1;
+
+  .cdk-drag-placeholder {
+    display: none !important;
+  }
+}

@@ -1,0 +1,19 @@
+:host h2 {
+  margin-bottom: 0;
+  position: relative;
+}
+
+.title__wrapper {
+  position: relative;
+}
+
+.red-line {
+  background: var(--health);
+  height: 100%;
+  width: 14px;
+  border-radius: 10px;
+  position: absolute;
+  left: calc(50% - 10px);
+  top: -15px;
+  transform: rotate(-45deg);
+}
